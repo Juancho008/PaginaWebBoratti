@@ -1,0 +1,9 @@
+{
+  "name": "pagina-web-boratti",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/serve.mjs",
+    "update:instagram": "node scripts/update-instagram-feed.mjs"
+  }
+}

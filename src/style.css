@@ -525,6 +525,174 @@ body.nav-open {
   color: #0b3568;
 }
 
+/* --- Instagram carousel --- */
+
+.instagram-section {
+  position: relative;
+  z-index: 1;
+  padding:
+    1.5rem
+    max(0.75rem, env(safe-area-inset-right))
+    2.5rem
+    max(0.75rem, env(safe-area-inset-left));
+}
+
+.instagram-section__inner {
+  width: 100%;
+  max-width: 72rem;
+  margin: 0 auto;
+}
+
+.instagram-carousel {
+  position: relative;
+}
+
+.instagram-carousel__viewport {
+  overflow: hidden;
+}
+
+.instagram-carousel__track {
+  display: flex;
+  transition: transform 0.65s cubic-bezier(0.65, 0, 0.35, 1);
+  will-change: transform;
+}
+
+.instagram-carousel__page {
+  flex: 0 0 100%;
+  display: grid;
+  grid-template-columns: repeat(var(--instagram-grid-cols, 2), minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: 0;
+}
+
+.instagram-post {
+  position: relative;
+  display: block;
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.instagram-post img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+.instagram-post:hover img {
+  transform: scale(1.04);
+}
+
+.instagram-post__badge {
+  position: absolute;
+  top: 0.65rem;
+  right: 0.65rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.35rem;
+  height: 1.35rem;
+  color: #ffffff;
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.45));
+}
+
+.instagram-post__badge svg {
+  width: 100%;
+  height: 100%;
+}
+
+.instagram-post--skeleton,
+.instagram-post--placeholder {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.12) 50%, rgba(255, 255, 255, 0.05) 100%);
+  background-size: 200% 100%;
+  animation: instagram-skeleton 1.4s ease-in-out infinite;
+}
+
+.instagram-post--placeholder {
+  animation: none;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+@keyframes instagram-skeleton {
+  0% { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}
+
+.instagram-carousel__nav {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: none;
+  border-radius: 50%;
+  color: #111827;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
+  transform: translateY(-50%);
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.instagram-carousel__nav:hover {
+  transform: translateY(-50%) scale(1.05);
+}
+
+.instagram-carousel__nav svg {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.instagram-carousel__nav--prev {
+  left: 0.35rem;
+}
+
+.instagram-carousel__nav--next {
+  right: 0.35rem;
+}
+
+.instagram-carousel__nav[hidden] {
+  display: none;
+}
+
+.instagram-carousel__empty {
+  width: 100%;
+  padding: 2rem 1rem;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.82);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.instagram-carousel__empty p {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.instagram-carousel__empty a,
+.instagram-section__profile {
+  color: #ffffff;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.instagram-section__profile {
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+}
+
+.instagram-section__profile:hover {
+  text-decoration: underline;
+}
+
 /* --- Partners / obras sociales carousel --- */
 
 .partners-section {
@@ -787,6 +955,19 @@ body.nav-open {
     justify-self: end;
     width: min(100%, calc(100% + 1.5rem));
     margin-right: calc(-1 * max(0.75rem, env(safe-area-inset-right)));
+  }
+
+  .instagram-section {
+    padding-left: max(1.25rem, env(safe-area-inset-left));
+    padding-right: max(1.25rem, env(safe-area-inset-right));
+  }
+
+  .instagram-carousel__nav--prev {
+    left: -0.35rem;
+  }
+
+  .instagram-carousel__nav--next {
+    right: -0.35rem;
   }
 
   .hero__eyebrow {

@@ -1,4 +1,4 @@
- // --- 1. UI & Scroll Observer ---
+    // --- 1. UI & Scroll Observer ---
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) entry.target.classList.add('visible');
