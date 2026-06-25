@@ -60,9 +60,44 @@ body.nav-open {
   justify-content: space-between;
   gap: 1rem;
   min-height: var(--header-height);
-  padding: 0.75rem max(1.25rem, env(safe-area-inset-left)) 0.75rem max(1.25rem, env(safe-area-inset-right));
+  padding:
+    0.85rem
+    max(1.25rem, env(safe-area-inset-right))
+    0.85rem
+    max(1.25rem, env(safe-area-inset-left));
   background: transparent;
   backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom: 1px solid transparent;
+  box-shadow: none;
+  transition:
+    background-color 0.35s ease,
+    backdrop-filter 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease,
+    min-height 0.35s ease,
+    padding 0.35s ease;
+}
+
+.site-nav.is-scrolled {
+  background: rgba(6, 16, 34, 0.62);
+  backdrop-filter: blur(18px) saturate(150%);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.28);
+  align-items: center;
+  min-height: 7.5rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.site-nav.is-scrolled .brand-logo-wrap {
+  height: 3.25rem;
+}
+
+.site-nav.is-scrolled .brand-logo {
+  top: 50%;
+  height: 7.5rem;
 }
 
 .brand-logo-wrap {
@@ -88,6 +123,7 @@ body.nav-open {
   width: auto;
   max-width: none;
   display: block;
+  transition: top 0.35s ease, height 0.35s ease;
 }
 
 .nav-toggle {
@@ -543,12 +579,34 @@ body.nav-open {
   margin: 0 auto;
 }
 
+.instagram-section__title {
+  margin: 0 0 2rem;
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(1.85rem, 7vw, 4.25rem);
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  color: #ffffff;
+  text-shadow:
+    0 0 32px rgba(255, 255, 255, 0.28),
+    0 0 64px rgba(34, 211, 238, 0.18);
+}
+
+.instagram-section__title-accent {
+  background: linear-gradient(135deg, #ffffff 0%, #cffafe 45%, #2563eb 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
 .instagram-carousel {
   position: relative;
 }
 
 .instagram-carousel__viewport {
   overflow: hidden;
+  width: 100%;
+  min-height: clamp(14rem, 55vw, 22rem);
 }
 
 .instagram-carousel__track {
@@ -562,7 +620,7 @@ body.nav-open {
   display: grid;
   grid-template-columns: repeat(var(--instagram-grid-cols, 2), minmax(0, 1fr));
   grid-template-rows: repeat(2, minmax(0, 1fr));
-  gap: 0;
+  gap: clamp(0.35rem, 1vw, 0.5rem);
 }
 
 .instagram-post {
@@ -570,6 +628,7 @@ body.nav-open {
   display: block;
   aspect-ratio: 1;
   overflow: hidden;
+  border-radius: 0.35rem;
   background: rgba(255, 255, 255, 0.04);
 }
 
@@ -890,7 +949,16 @@ body.nav-open {
   }
 
   .site-nav {
-    padding: 1.5rem max(3rem, env(safe-area-inset-right)) 0 max(3rem, env(safe-area-inset-left));
+    padding:
+      1.5rem
+      max(3rem, env(safe-area-inset-right))
+      0
+      max(3rem, env(safe-area-inset-left));
+  }
+
+  .site-nav.is-scrolled {
+    padding-left: max(3rem, env(safe-area-inset-left));
+    padding-right: max(3rem, env(safe-area-inset-right));
   }
 
   .brand-logo-wrap {

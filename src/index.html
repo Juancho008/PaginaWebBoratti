@@ -78,15 +78,15 @@
             </div>
         </section>
 
-        <section class="instagram-section" aria-label="Instagram de Sanatorio Boratti">
-            <div class="instagram-section__inner reveal-up">
+        <section class="instagram-section" aria-labelledby="instagram-title">
+            <div class="instagram-section__inner reveal-up visible">
+                <h2 id="instagram-title" class="instagram-section__title">
+                    Nuestras<br />
+                    <span class="instagram-section__title-accent">redes sociales.</span>
+                </h2>
+
                 <div class="instagram-carousel" id="instagram-carousel">
-                    <button
-                        type="button"
-                        class="instagram-carousel__nav instagram-carousel__nav--prev"
-                        aria-label="Publicaciones anteriores"
-                        hidden
-                    >
+                    <button type="button" class="instagram-carousel__nav instagram-carousel__nav--prev" aria-label="Publicaciones anteriores" hidden>
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                             <path d="M15 18l-6-6 6-6"></path>
                         </svg>
@@ -96,24 +96,14 @@
                         <div class="instagram-carousel__track" id="instagram-carousel-track" aria-live="polite"></div>
                     </div>
 
-                    <button
-                        type="button"
-                        class="instagram-carousel__nav instagram-carousel__nav--next"
-                        aria-label="Publicaciones siguientes"
-                        hidden
-                    >
+                    <button type="button" class="instagram-carousel__nav instagram-carousel__nav--next" aria-label="Publicaciones siguientes" hidden>
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                             <path d="M9 18l6-6-6-6"></path>
                         </svg>
                     </button>
                 </div>
 
-                <a
-                    class="instagram-section__profile"
-                    href="https://www.instagram.com/borattisanatorio/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
+                <a class="instagram-section__profile" href="https://www.instagram.com/borattisanatorio/" target="_blank" rel="noopener noreferrer">
                     @borattisanatorio
                 </a>
             </div>
@@ -231,9 +221,9 @@
 
         <section class="partners-section" aria-labelledby="partners-title">
             <div class="partners-section__inner reveal-up">
-                <h2 id="partners-title" class="partners-section__title">
+                <h6 id="partners-title" class="partners-section__title">
                     Nuestro sanatorio trabaja con las mejores obras sociales. Tratamos de brindar a nuestros pacientes siempre lo mejor
-                </h2>
+                </h6>
 
                 <div class="partners-carousel" aria-label="Obras sociales" aria-live="polite">
                     <div class="partners-carousel__viewport">
@@ -285,6 +275,7 @@
 
     </main>
 
+    <script src="./data/instagram-posts.js"></script>
     <script src="./instagram-feed.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/objects/Water.js"></script>

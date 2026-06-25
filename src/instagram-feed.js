@@ -31,7 +31,7 @@
   const getBadgeMarkup = (mediaType) => {
     if (mediaType === 'VIDEO') {
       return `
-        <span class="instagram-post__badge" aria-hidden="true">
+        <span class="instagram-post__badge instagram-post__badge--video" aria-hidden="true" title="Video">
           <svg viewBox="0 0 24 24" fill="currentColor">
             <path d="M8 5v14l11-7z"></path>
           </svg>
@@ -41,7 +41,7 @@
 
     if (mediaType === 'CAROUSEL_ALBUM') {
       return `
-        <span class="instagram-post__badge" aria-hidden="true">
+        <span class="instagram-post__badge instagram-post__badge--album" aria-hidden="true" title="Carrusel">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
             <rect x="4" y="4" width="16" height="16" rx="2"></rect>
             <rect x="7" y="7" width="16" height="16" rx="2"></rect>
@@ -50,7 +50,15 @@
       `;
     }
 
-    return '';
+    return `
+      <span class="instagram-post__badge instagram-post__badge--image" aria-hidden="true" title="Imagen">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+          <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+          <circle cx="8.5" cy="8.5" r="1.5"></circle>
+          <path d="M21 15l-5-5L5 21"></path>
+        </svg>
+      </span>
+    `;
   };
 
   const renderSkeleton = () => {
@@ -137,7 +145,19 @@
     updateCarousel();
   };
 
+  const loadEmbeddedFeed = () => {
+    const embedded = window.__INSTAGRAM_FEED__;
+    if (Array.isArray(embedded?.posts) && embedded.posts.length > 0) {
+      return embedded.posts;
+    }
+
+    return null;
+  };
+
   const fetchFeed = async () => {
+    const embedded = loadEmbeddedFeed();
+    if (embedded) return embedded;
+
     for (const source of FEED_SOURCES) {
       try {
         const response = await fetch(source, { cache: 'no-store' });

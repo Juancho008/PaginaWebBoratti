@@ -3,7 +3,9 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "start": "node scripts/serve.mjs",
     "dev": "node scripts/serve.mjs",
-    "update:instagram": "node scripts/update-instagram-feed.mjs"
+    "update:instagram": "node scripts/update-instagram-feed.mjs",
+    "sync:instagram": "node scripts/sync-instagram-posts.mjs"
   }
 }

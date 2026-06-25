@@ -9,8 +9,16 @@
     document.querySelectorAll('.reveal-up').forEach(el => observer.observe(el));
 
     const navToggle = document.querySelector('.nav-toggle');
+    const siteNav = document.querySelector('.site-nav');
     const siteMenu = document.getElementById('site-menu');
     const navLinks = document.querySelectorAll('.site-nav__link');
+
+    const updateNavScrollState = () => {
+      siteNav?.classList.toggle('is-scrolled', window.scrollY > 24);
+    };
+
+    updateNavScrollState();
+    window.addEventListener('scroll', updateNavScrollState, { passive: true });
 
     const closeNav = () => {
       if (!navToggle || !siteMenu) return;
